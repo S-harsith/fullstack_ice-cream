@@ -1,0 +1,683 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000000; /* Dark safety fallback color */
+}
+
+/* ==========================================================================
+   2. FOUR DIFFERENT BACKGROUND IMAGES (ONE PER BLOCK)
+   ========================================================================== */
+
+/* --- PAGE 1: HOME --- */
+#home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    /* Your local strawberry bowl image */
+    background-image: url('Gemini_Generated_Image_tfx7gvtfx7gvtfx7.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- PAGE 2: ABOUT US --- */
+#about {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    
+    /* YOUR LOCAL ABOUT IMAGE HERE */
+    background-image: url('Gemini_Generated_Image_rzuajmrzuajmrzua.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- PAGE 3: OUR PRODUCTS --- */
+#products {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 40px;
+    
+    /* YOUR LOCAL PRODUCTS IMAGE HERE */
+    background-image: url('Gemini_Generated_Image_xa68zvxa68zvxa68.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- PAGE 4: CONTACT US --- */
+#contact {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    
+    /* YOUR LOCAL CONTACT IMAGE HERE */
+    background-image: url('Gemini_Generated_Image_rzuajmrzuajmrzua.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   3. TEXT CONTRAST ENGINE (FLOATING OVER THE BACKGROUNDS)
+   ========================================================================== */
+.products-main-title, .contact-main-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 55px;
+    color: #720043;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.product-name, .section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+    color: #720043;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Clear white paragraphs that stand out on any background image */
+.product-description, .section-text, .contact-subtitle {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.85;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   2. HERO / FIRST PAGE LAYOUT (Transparent Backgrounds)
+   ========================================================================== */
+.hero-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: transparent; /* Allows the body image to show through perfectly */
+}
+
+/* NAVBAR STRUCTURE: Permanently locked at the top of the screen */
+.navbar {
+    display: flex;
+    justify-content: center; 
+    padding: 20px 60px 15px 60px; /* Adjusted top padding slightly for fixed layout */
+    
+    /* THE FIXED FIX: Sticky positioning coordinates */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Keeps the centered bar perfectly mathematically balanced */
+    
+    width: 100%;
+    max-width: 650px; 
+    
+    /* Layer Control: Ensures the menu bar floats on top of the scrolling text layers */
+    z-index: 1000; 
+    
+    border-bottom: 2px solid #720043; 
+    
+    /* Animation setup */
+    transform-origin: center;
+    animation: expandLineFixed 1s ease-out forwards;
+}
+
+/* ==========================================================================
+   UPDATED KEYFRAME FOR FIXED POSITIONING
+   ========================================================================== */
+/* We update this animation so it doesn't fight with the new fixed center coordinates */
+@keyframes expandLineFixed {
+    from { 
+        transform: translateX(-50%) scaleX(0); 
+    }
+    to { 
+        transform: translateX(-50%) scaleX(1); 
+    }
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #720043;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* HERO TEXT PLACEMENT */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.brand-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand-title {
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 180px;        
+    font-weight: 900;
+    color: #720043;
+    letter-spacing: 4px;
+    line-height: 0.9;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.4s forwards;
+}
+
+.brand-subtitle {
+    font-size: 70px;         
+    font-weight: bold;
+    color: #000000;
+    letter-spacing: 6px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.6s forwards;
+}
+
+.brand-tagline {
+    font-family: 'Great Vibes', cursive;
+    font-size: 110px;        
+    color: #720043;
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 0.8s forwards;
+}
+
+.brand-slogan {
+    font-size: 30px;                 
+    font-weight: 500;
+    color: #ffcc00; /* Darkened slightly to balance on the image without text-shadow */
+    font-style: italic;              
+    letter-spacing: 1.5px;
+    margin-top: 25px;                
+    opacity: 0;
+    animation: fadeUp 1s ease-out 1.0s forwards; 
+}
+
+/* ==========================================================================
+   3. SECOND PAGE: ABOUT US (FROSTED GLASS SCROLLING CARD)
+   ========================================================================== */
+.about-section {
+    width: 100%;
+    min-height: 100vh;
+    background: transparent; /* No conflicting image call here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px; /* Generous top padding keeps content from cramming */
+}
+
+.about-card {
+    /* REMOVED: All background colors, glass blurs, borders, and white boxes */
+    background: transparent; 
+    backdrop-filter: none;          
+    -webkit-backdrop-filter: none;   
+    border: none;
+    box-shadow: none;
+    
+    /* KEEP LAYOUT: Controls the maximum width and spacing of your paragraph columns */
+    max-width: 850px;                     
+    padding: 20px;
+    text-align: center;
+}
+/* THE SCROLL ANIMATION CONFIGURATION */
+.about-card {
+    /* ... keep your existing styles ... */
+    
+    /* NEW: Prepares the card to be hidden and lowered before scroll */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* THE TRIGGER CLASS: JavaScript will add this when you scroll down */
+.about-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 55px;                      
+    color: #720043; /* Stays your signature brand maroon */
+    margin-bottom: 35px;
+    letter-spacing: 1.5px;
+    
+    /* THE CONTRAST FIX: Gives the title a clean lift off the image background */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.about-text {
+    /* THE BIG FIX: Changes the story paragraph text to white so it contrasts with the image background */
+    color: #ffcc00;
+    
+    font-size: 30px; /* Slightly larger to look bold and elegant without a background box */
+    font-weight: 500;
+   font-style: italic;              
+    line-height: 1.85;                    
+    margin-bottom: 25px;
+    
+    /* THE CONTRAST FIX: Adds a subtle dark shadow behind the white letters. 
+       This makes sure the text is fully readable even when floating over white ice cream scoops! */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.about-text:last-child {
+    margin-bottom: 0;                     
+}
+
+/* Enhances highlighted text inside the floating paragraphs */
+.about-text strong {
+    color: #ffcc00; /* Changes "moon milk" highlight to a warm luxury honey/gold color */
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   4. ANIMATION ENGINE KEYFRAMES
+   ========================================================================== */
+@keyframes expandLine {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* THE MID-PAGE DIVIDER LINE (LONG VERSION) */
+.section-divider {
+    width: 100%;
+    max-width: 750px;           /* INCREASED: Makes the line beautifully long across the screen */
+    height: 2px;                /* Reduced slightly to 2px so a longer line looks sharp and elegant */
+    background-color: #720043;  /* Your core maroon brand color */
+    
+    /* Centers the line horizontally on the screen and adds healthy spacing above/below */
+    margin: 60px auto;          
+    
+    border-radius: 1px;
+    
+    /* Keeps the line crisp and visible over all areas of the background photo */
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.6);
+    
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   5. THIRD PAGE: OUR PRODUCTS (SIDE-BY-SIDE RESPONSIVE GRID)
+   ========================================================================== */
+.products-section {
+    width: 100%;
+    min-height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 40px;
+}
+
+.products-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    
+    /* Prepares the entire section to fade in smoothly on scroll */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Scroll trigger class handled by JavaScript */
+.products-container.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.products-main-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 55px;
+    color: #720043;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/* Grid Layout: Displays items side-by-side on desktop, stacks vertically on mobile */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 50px;
+    align-items: start;
+}
+
+.product-item {
+    padding: 20px;
+    text-align: left; /* Aligns description beautifully like a premium menu layout */
+}
+
+.product-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    color: #720043;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.product-description {
+    color: #ffcc00;
+    font-style: italic;              
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   6. FOURTH PAGE: CONTACT US (PREMIUM GLASS FOOTER PANEL)
+   ========================================================================== */
+.contact-section {
+    width: 100%;
+    min-height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
+
+.contact-container {
+    max-width: 1100px;
+    width: 100%;
+    text-align: center;
+    
+    /* Prepares section to fade in smoothly on scroll */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Scroll trigger class handled by JavaScript */
+.contact-container.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-main-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 55px;
+    color: #720043;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.contact-subtitle {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Contact Details Cards Box Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.contact-card-item {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+/* Beautiful Interactivity: Item glows and lifts up when you cursor over it */
+.contact-card-item:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(114, 0, 67, 0.5);
+    box-shadow: 0 20px 40px rgba(114, 0, 67, 0.25);
+}
+
+.contact-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.contact-card-item h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    color: #720043;
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.contact-card-item p {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Social links inline alignment */
+.contact-socials {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contact-socials a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.contact-socials a:hover {
+    color: #ffffff;
+}
+
+/* THE CALL-TO-ACTION BUTTON STYLE */
+.contact-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #720043;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 25px rgba(114, 0, 67, 0.4);
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #ffffff;
+    color: #720043;
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   7. MOBILE / RESPONSIVE FIXES
+   The desktop sizes above (180px titles, 450px-min grid columns, etc.)
+   don't scale down, so on a phone the grid forces horizontal squishing
+   and the huge fonts overflow the screen. These breakpoints fix that.
+   ========================================================================== */
+
+/* --- TABLETS & SMALL LAPTOPS --- */
+@media (max-width: 900px) {
+    .products-grid {
+        grid-template-columns: 1fr; /* stack cards instead of forcing 450px columns */
+    }
+
+    .brand-title {
+        font-size: 120px;
+    }
+
+    .brand-tagline {
+        font-size: 80px;
+    }
+}
+
+/* --- PHONES (LANDSCAPE & LARGE) --- */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 14px 20px;
+        max-width: 100%;
+    }
+
+    .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .brand-title {
+        font-size: 70px;
+        letter-spacing: 2px;
+    }
+
+    .brand-subtitle {
+        font-size: 36px;
+        letter-spacing: 3px;
+    }
+
+    .brand-tagline {
+        font-size: 50px;
+    }
+
+    .brand-slogan {
+        font-size: 18px;
+    }
+
+    .about-section,
+    .products-section,
+    .contact-section {
+        padding: 70px 16px;
+    }
+
+    .about-title,
+    .products-main-title,
+    .contact-main-title {
+        font-size: 34px;
+    }
+
+    .about-text {
+        font-size: 18px;
+    }
+
+    .product-name {
+        font-size: 24px;
+    }
+
+    .product-description {
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .products-grid {
+        gap: 30px;
+    }
+
+    .contact-subtitle {
+        font-size: 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-card-item {
+        padding: 30px 20px;
+    }
+
+    .contact-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+
+    .section-divider {
+        margin: 40px auto;
+    }
+}
+
+/* --- SMALL PHONES --- */
+@media (max-width: 380px) {
+    .brand-title {
+        font-size: 54px;
+    }
+
+    .brand-tagline {
+        font-size: 40px;
+    }
+
+    .about-title,
+    .products-main-title,
+    .contact-main-title {
+        font-size: 28px;
+    }
+}
