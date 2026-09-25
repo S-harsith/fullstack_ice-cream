@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-maroon: #6B0E1E;
+    --color-maroon-dark: #520815;
+    --color-cream: #FCF7F2;
+    --color-cream-card: #FAF2EC;
+    --color-gold: #C5A059;
+    --color-gold-light: #E7D7B8;
+    --color-gold-border: #D8C3A0;
+    --color-text-dark: #2B1618;
+    --color-text-muted: #6B5E59;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FCF7F2;
+    color: #2B1618;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-serif-luxury {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Custom arch shapes for the signature kulfi cards */
+.arch-top {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FCF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 3px;
+}

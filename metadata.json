@@ -1,0 +1,6 @@
+{
+  "name": "VSL Moon Milk",
+  "description": "Artisanal Celestial Kulfi - Handcrafted slow-churned heritage kulfi experience, celestial flavors, rich heritage, online ordering, and inquiry concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
