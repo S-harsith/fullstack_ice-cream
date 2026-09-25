@@ -1,28 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from './firebase';
+import React, { useState } from 'react';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminDashboard } from './components/AdminDashboard';
 
+const SESSION_KEY = 'vsl_admin_authed';
+
 export default function AdminPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [isAuthed, setIsAuthed] = useState<boolean>(
+    () => sessionStorage.getItem(SESSION_KEY) === 'true'
+  );
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setCheckingAuth(false);
-    });
-    return () => unsubscribe();
-  }, []);
+  const handleLogout = () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    setIsAuthed(false);
+  };
 
-  if (checkingAuth) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FCF7F2]">
-        <p className="text-[#6B5E59] text-sm">Loading...</p>
-      </div>
-    );
-  }
-
-  return user ? <AdminDashboard /> : <AdminLogin />;
+  return isAuthed ? (
+    <AdminDashboard onLogout={handleLogout} />
+  ) : (
+    <AdminLogin onSuccess={() => setIsAuthed(true)} />
+  );
 }
