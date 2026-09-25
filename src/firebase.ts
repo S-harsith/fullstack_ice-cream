@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 // Safe to keep public — Firebase web config keys are not secret.
@@ -20,6 +19,3 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore Database — import { db } from './firebase' anywhere you need it
 export const db = getFirestore(app);
-
-// Initialize Firebase Auth — used for the password-protected /admin dashboard
-export const auth = getAuth(app);
