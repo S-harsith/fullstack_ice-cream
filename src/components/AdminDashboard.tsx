@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { signOut } from 'firebase/auth';
-import { db, auth } from '../firebase';
+import { db } from '../firebase';
 import {
   LineChart,
   Line,
@@ -22,8 +21,11 @@ interface OrderDoc {
   createdAt: { seconds: number } | null;
   items: { name: string; quantity: number }[];
 }
+   interface AdminDashboardProps {
+     onLogout: () => void;
+   }
 
-export const AdminDashboard: React.FC = () => {
+   export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
   const [orders, setOrders] = useState<OrderDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -84,7 +86,7 @@ export const AdminDashboard: React.FC = () => {
   const totalOrders = orders.length;
   const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
 
-  const handleLogout = () => signOut(auth);
+   const handleLogout = () => onLogout();
 
   if (loading) {
     return (
