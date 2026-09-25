@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import { Lock } from 'lucide-react';
 
-export const AdminLogin: React.FC = () => {
-  const [email, setEmail] = useState('');
+// Simple hardcoded password gate — no auth provider involved.
+const ADMIN_PASSWORD = '$2005harsithofficial';
+const SESSION_KEY = 'vsl_admin_authed';
+
+interface AdminLoginProps {
+  onSuccess: () => void;
+}
+
+export const AdminLogin: React.FC<AdminLoginProps> = ({ onSuccess }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,14 +18,13 @@ export const AdminLogin: React.FC = () => {
     e.preventDefault();
     setError('');
     setIsSubmitting(true);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      // onAuthStateChanged in AdminPage will pick this up automatically
-    } catch (err) {
-      setError('Invalid email or password. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+    if (password === ADMIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, 'true');
+      onSuccess();
+    } else {
+      setError('Invalid password. Please try again.');
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -35,19 +39,6 @@ export const AdminLogin: React.FC = () => {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#8C7A75]">
-              Email
-            </label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2.5 bg-white border border-[#D8C3A0] rounded text-sm text-[#2B1618] focus:outline-hidden focus:border-[#6B0E1E]"
-            />
-          </div>
-
           <div className="space-y-1">
             <label className="text-[11px] font-semibold uppercase tracking-wider text-[#8C7A75]">
               Password
